@@ -1,20 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Intranet Patro</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Connexion - Intranet Patro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #116530;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #2a6b2d;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #0008;
+      width: 320px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1em;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 90%;
+      padding: 0.5em;
+      margin: 0.5em 0 1em 0;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    button {
+      width: 100%;
+      padding: 0.7em;
+      background: #0f4a16;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0d3d13;
+    }
+    .error {
+      color: #ffbaba;
+      margin-bottom: 1em;
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Bienvenue sur l'Intranet du Patro</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <p>Ceci est une version simple de votre intranet.</p>
-  </main>
+  <div class="login-container">
+    <h1>Connexion</h1>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Nom d'utilisateur" required />
+      <input type="password" id="password" placeholder="Mot de passe" required />
+      <div class="error" id="errorMsg">Identifiants incorrects</div>
+      <button type="submit">Se connecter</button>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Exemple simple : login et mot de passe codés en dur
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (username === 'admin' && password === 'patro2025') {
+        alert('Connexion réussie !');
+        // Ici tu peux rediriger vers une autre page ou afficher le contenu
+        window.location.href = 'accueil.html'; // par exemple
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
