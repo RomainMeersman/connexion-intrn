@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscription - Patro du Val d’Haine</title>
+  <link rel="icon" href="https://static.wixstatic.com/media/99150c_8896570c1b1c41989608ff850dd7429a~mv2.png" />
+  <style>
+    body, html {
+      margin: 0;
+      height: 100vh;
+      font-family: Calibri, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .signup-container {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 380px;
+      padding: 40px 35px;
+      text-align: center;
+    }
+    .logo {
+      width: 100px;
+      margin-bottom: 25px;
+    }
+    h2 {
+      color: #116530;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1.8px solid #d1d9e6;
+    }
+    input:focus {
+      outline: none;
+      border-color: #116530;
+      box-shadow: 0 0 5px rgba(17, 101, 48, 0.4);
+    }
+    button {
+      background-color: #116530;
+      color: white;
+      padding: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0d4a26;
+    }
+    .success {
+      color: #116530;
+      margin-top: 10px;
+      font-weight: 600;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <img class="logo" src="https://static.wixstatic.com/media/99150c_8896570c1b1c41989608ff850dd7429a~mv2.png" alt="Logo Patro" />
+    <h2>Créer un compte</h2>
+    <form id="signupForm">
+      <input type="text" id="email" placeholder="Email" required />
+      <input type="password" id="newPassword" placeholder="Mot de passe" required />
+      <button type="submit">S'inscrire</button>
+    </form>
+    <div class="success" id="successMsg">Compte créé ! Vous pouvez vous connecter.</div>
+  </div>
+
+  <script>
+    // Simule les utilisateurs partagés (comme dans login/index.html)
+    const users = {
+      "romain@patrovaldhaine.be": "Romainelise829",
+      "logan@patrovaldhaine.be": "Changez-Moi!"
+    };
+
+    const form = document.getElementById("signupForm");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const password = document.getElementById("newPassword").value;
+
+      if (!users[email]) {
+        users[email] = password;
+        successMsg.style.display = "block";
+        form.reset();
+
+        // Astuce : stocke temporairement dans localStorage
+        localStorage.setItem("users", JSON.stringify(users));
+      } else {
+        alert("Cet email est déjà enregistré.");
+      }
+    });
+  </script>
+</body>
+</html>
