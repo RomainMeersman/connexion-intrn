@@ -155,9 +155,9 @@
         Bienvenue sur la passerelle de connexion aux bases de données.<br />
         Merci de t'identifier avec tes login.
       </div>
-      <form id="loginForm">
-        <input type="text" id="username" placeholder="Email" required />
-        <input type="password" id="password" placeholder="Mot de passe" required />
+      <form id="loginForm" autocomplete="off">
+        <input type="text" id="username" placeholder="Email" required autocomplete="off" />
+        <input type="password" id="password" placeholder="Mot de passe" required autocomplete="off" />
         <div class="error" id="errorMsg">Identifiants incorrects</div>
         <button type="submit">Se connecter</button>
       </form>
@@ -175,7 +175,13 @@
   </div>
 
   <script>
-    // Gestion du login (exemple simple)
+    // Forcer la reconnexion en supprimant tout stockage local à chaque chargement
+    window.onload = () => {
+      localStorage.clear();
+      sessionStorage.clear();
+    };
+
+    // Liste simple d'utilisateurs & mots de passe
     const users = {
       "romain@patrovaldhaine.be": "Romainelise829",
       "logan@patrovaldhaine.be": "Changez-Moi!"
@@ -191,6 +197,7 @@
       const password = document.getElementById('password').value;
 
       if (users[username] && users[username] === password) {
+        // Redirection vers l'intranet si OK
         window.location.href = "https://intranet.patrovaldhaine.be";
       } else {
         errorMsg.style.display = 'block';
