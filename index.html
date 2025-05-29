@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Connexion Patro - Passerelle</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/99150c_8896570c1b1c41989608ff850dd7429a~mv2.png" />
+
   <style>
     /* Reset */
     * {
@@ -12,7 +16,7 @@
     body, html {
       margin: 0;
       height: 100vh;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Calibri, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f6f8;
       display: flex;
       justify-content: center;
@@ -39,13 +43,23 @@
       display: block;
     }
 
-    /* Titre / Texte */
+    /* Message supplémentaire */
+    .main-welcome {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #116530;
+      font-family: Calibri, sans-serif;
+    }
+
+    /* Texte d’accueil */
     .welcome-text {
       font-weight: 600;
       font-size: 1.15rem;
       margin-bottom: 30px;
       line-height: 1.4;
       color: #222;
+      font-family: Calibri, sans-serif;
     }
 
     /* Formulaire */
@@ -63,6 +77,7 @@
       border-radius: 5px;
       border: 1.8px solid #d1d9e6;
       transition: border-color 0.3s ease;
+      font-family: Calibri, sans-serif;
     }
 
     input[type="text"]:focus,
@@ -83,6 +98,7 @@
       border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      font-family: Calibri, sans-serif;
     }
 
     button:hover {
@@ -97,6 +113,7 @@
       display: none;
       margin-top: -10px;
       margin-bottom: 10px;
+      font-family: Calibri, sans-serif;
     }
 
     /* Responsive */
@@ -116,6 +133,7 @@
       class="logo"
       aria-hidden="true"
     />
+    <div class="main-welcome">Bienvenue au Patro du Val d'Haine de Maurage</div>
     <div class="welcome-text">
       Bienvenue sur la passerelle de connexion aux bases de données.<br />
       Merci de t'identifier avec tes login.
