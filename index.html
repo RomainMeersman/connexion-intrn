@@ -1,10 +1,177 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta http-equiv="refresh" content="0; url=/login/" />
-    <title>Redirection...</title>
-  </head>
-  <body>
-    <p>Redirection vers <a href="/login/">/login/</a>...</p>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Patro du Val d’Haine - Accueil</title>
+<link rel="icon" href="https://static.wixstatic.com/media/99150c_8896570c1b1c41989608ff850dd7429a~mv2.png" />
+<style>
+  /* Reset */
+  *, *::before, *::after { box-sizing: border-box; }
+  body, html {
+    margin: 0; padding: 0; font-family: 'Calibri', sans-serif; background: #f9fafb; color: #222;
+  }
+
+  header {
+    background: #116530;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header img {
+    height: 50px;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  nav a:hover {
+    color: #a1d490;
+  }
+
+  .hero {
+    position: relative;
+    background: url('https://static.wixstatic.com/media/99150c_71a5dfe53b9945aa88cc4456e74bbca5~mv2.jpg') center center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 15px;
+  }
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  section h2 {
+    color: #116530;
+    border-bottom: 3px solid #116530;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    background: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .card h3 {
+    margin-top: 15px;
+    color: #116530;
+  }
+
+  footer {
+    background: #116530;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: #a1d490;
+    text-decoration: none;
+    margin: 0 8px;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .cards {
+      flex-direction: column;
+      align-items: center;
+    }
+    .card {
+      width: 90%;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <img src="https://static.wixstatic.com/media/99150c_8896570c1b1c41989608ff850dd7429a~mv2.png" alt="Logo Patro du Val d'Haine" />
+    <nav>
+      <a href="/">Accueil</a>
+      <a href="/about.html">À propos</a>
+      <a href="/activities.html">Activités</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/login/index.html">Connexion</a>
+    </nav>
+  </header>
+
+  <div class="hero" role="banner" aria-label="Image principale du Patro du Val d’Haine">
+    <h1>Patro du Val d’Haine</h1>
+  </div>
+
+  <main role="main">
+    <section aria-label="Présentation">
+      <p>Bienvenue au Patro du Val d’Haine, une association de jeunesse à Maurage. Nous proposons des activités éducatives, sportives et culturelles pour tous les âges.</p>
+    </section>
+
+    <section aria-label="Nos activités">
+      <h2>Nos activités</h2>
+      <div class="cards">
+        <article class="card" tabindex="0">
+          <img src="https://static.wixstatic.com/media/99150c_91f9672398c245b0bda3d3a3ce16a84a~mv2.jpg" alt="Jeunes en activité sportive" />
+          <h3>Activités sportives</h3>
+          <p>Participez à nos sessions sportives hebdomadaires pour tous niveaux.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <img src="https://static.wixstatic.com/media/99150c_59d434e6d6404de6b1a13a802c7d1f6f~mv2.jpg" alt="Atelier créatif" />
+          <h3>Ateliers créatifs</h3>
+          <p>Exprimez votre créativité avec nos ateliers artistiques.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <img src="https://static.wixstatic.com/media/99150c_8b5a55d00b9644fcb14693328f6d0d13~mv2.jpg" alt="Camp d’été en Ardenne" />
+          <h3>Camp d’été</h3>
+          <p>Rejoignez notre camp annuel en Ardenne pour des moments inoubliables.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Patro du Val d’Haine — 
+    <a href="mailto:contact@patrovaldhaine.be">contact@patrovaldhaine.be</a> — 
+    <a href="https://facebook.com/patrovaldhaine" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </footer>
+</body>
 </html>
