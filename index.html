@@ -2,14 +2,210 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Redirection...</title>
-  <meta http-equiv="refresh" content="0; url=https://patrovaldhaine.wixstudio.com/patrovdh/intranet" />
-  <script>
-    // Redirection immédiate avec JavaScript aussi, au cas où
-    window.location.href = "https://patrovaldhaine.wixstudio.com/patrovdh/intranet";
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Connexion Patro - Passerelle</title>
+  <style>
+    /* Reset basique */
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+
+    /* Conteneur principal en deux colonnes */
+    .container {
+      display: flex;
+      flex: 1;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Colonne gauche - blanche */
+    .left {
+      flex: 1;
+      background: white;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #333;
+      position: relative;
+    }
+
+    .welcome-text {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    form {
+      max-width: 320px;
+      width: 100%;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #116530;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0d4a26;
+    }
+
+    .error {
+      color: #cc0000;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    /* Colonne droite - photos + logo */
+    .right {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #222;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Logo Patro en haut à droite */
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 140px;
+      z-index: 10;
+      user-select: none;
+    }
+
+    /* Slideshow photos en fond */
+    .slideshow {
+      flex: 1;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* Responsive : sur mobile on empile */
+    @media(max-width: 768px) {
+      body, html {
+        flex-direction: column;
+        height: auto;
+      }
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+      .left, .right {
+        flex: none;
+        width: 100%;
+        height: 300px;
+      }
+      .right {
+        order: -1; /* afficher photos au dessus sur mobile */
+      }
+      .logo {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 10px auto 0 auto;
+        display: block;
+        width: 100px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>Redirection en cours, si vous n'êtes pas redirigé automatiquement, <a href="https://patrovaldhaine.wixstudio.com/patrovdh/intranet">cliquez ici</a>.</p>
+  <div class="container">
+    <div class="left">
+      <div class="welcome-text">
+        Bienvenue sur la passerelle de connexion aux bases de données.<br />
+        Merci de t'identifier avec tes login.
+      </div>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Mot de passe" required />
+        <div class="error" id="errorMsg">Identifiants incorrects</div>
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
+    <div class="right">
+      <!-- Logo Patro en haut à droite -->
+      <img src="https://static.wixstatic.com/media/99150c_8896570c1b1c41989608ff850dd7429a~mv2.png" alt="Logo Patro" class="logo" />
+      <!-- Slideshow photos -->
+      <div class="slideshow">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80');"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Gestion du login (exemple simple)
+    const users = {
+      "romain@patrovaldhaine.be": "Romainelise829",
+      "logan@patrovaldhaine.be": "Changez-Moi!"
+    };
+
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+
+      if (users[username] && users[username] === password) {
+        window.location.href = "https://intranet.patrovaldhaine.be";
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    });
+
+    // Slideshow photos - fondu automatique toutes les 5 secondes
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+  </script>
 </body>
 </html>
